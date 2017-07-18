@@ -14,6 +14,11 @@ var del = require('./routes/delete');
 var upd = require('./routes/update');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(get);
 app.use(getOne);
