@@ -1,0 +1,13 @@
+{
+  "name": "untitled1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "~4.15.2",
+    "mongodb": "^2.2.30"
+  }
+}
