@@ -13,13 +13,15 @@ MongoClient.connect(config.url, function (err, dbase) {
   db = dbase;
 });
 router.put('/:id', function (req, res){
-  db.collection('notes').update({_id: ObjectId(req.params.id)},
+  console.log(req.body)
+  db.collection('notes').updateOne({_id: ObjectId(req.params.id)},
     {
-      text: req.body.text,
-      active: req.body.active
+      $set:{
+        active: req.body.active
+      }
     }
   ).then(function (data) {
-    res.json(data.result);
+    res.json(data.ops);
   });
 });
 

@@ -16,8 +16,9 @@ MongoClient.connect(config.url, function (err, dbase) {
 router.post('/', function (req, res) {
   console.log(req.body);
   const note = {text: req.body.text, active: req.body.active};
-  db.collection('notes').save(note).then(function (data) {
-    res.json(data.result);
+  db.collection('notes').insertOne(note).then(function (data) {
+    console.log(data.ops);
+    res.json(data.ops);
   });
 });
 

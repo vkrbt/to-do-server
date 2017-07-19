@@ -14,8 +14,9 @@ MongoClient.connect(config.url, function (err, dbase) {
 });
 
 router.delete('/:id', function (req, res) {
-  db.collection('notes').remove({_id: ObjectId(req.params.id)}).then(function (data) {
-    res.json(data.result);
+  db.collection('notes').deleteOne({_id: ObjectId(req.params.id)}).then(function (data) {
+    console.log(data)
+    res.json(data.deletedCount);
   });
 });
 
